@@ -3,7 +3,7 @@
     Welcome!
     @endsection
 @section('content')
-    @if(count($errors > 0))
+    @if(isset($errors))
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
           <ul>
