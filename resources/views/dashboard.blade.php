@@ -24,10 +24,11 @@
     <section class="row posts">
         <div class="col-md-6 col-md-offset-3">
             <header><h3>what other peaople say...</h3></header>
+            @foreach($posts as $post)
             <article class="post">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet neque sit amet rhoncus iaculis. Aenean semper ipsum id gravida tincidunt. Phasellus sit amet facilisis ipsum, a porta eros. In rhoncus, libero in commodo sollicitudin, lorem enim semper ex, eu egestas lacus velit eu nunc. Mauris sed metus enim. Curabitur ac urna ac enim euismod bibendum. Nunc a diam eu elit facilisis sodales non eu ipsum. Nam dictum nisi sit amet maximus volutpat. Nunc aliquet est vel odio suscipit, eu mattis ex tincidunt. Duis tincidunt diam eu risus ultrices laoreet.</p>
+                <p>{{$post->body}}</p>
                 <div class="info">
-                    Posted by Max on 12 Feb 2016
+                    Posted by {{$post->user->first_name}} on {{$post->created_at}}
                 </div>
                 <div class="interaction">
                     <a href="#">Like</a> |
@@ -36,18 +37,7 @@
                     <a href="#">Delete</a>
                 </div>
             </article>
-            <article class="post">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet neque sit amet rhoncus iaculis. Aenean semper ipsum id gravida tincidunt. Phasellus sit amet facilisis ipsum, a porta eros. In rhoncus, libero in commodo sollicitudin, lorem enim semper ex, eu egestas lacus velit eu nunc. Mauris sed metus enim. Curabitur ac urna ac enim euismod bibendum. Nunc a diam eu elit facilisis sodales non eu ipsum. Nam dictum nisi sit amet maximus volutpat. Nunc aliquet est vel odio suscipit, eu mattis ex tincidunt. Duis tincidunt diam eu risus ultrices laoreet.</p>
-                <div class="info">
-                    Posted by Max on 12 Feb 2016
-                </div>
-                <div class="interaction">
-                    <a href="#">Like</a> |
-                    <a href="#">Dislike</a> |
-                    <a href="#">Edit</a> |
-                    <a href="#">Delete</a>
-                </div>
-            </article>
+            @endforeach
         </div>
     </section>
     @endsection
