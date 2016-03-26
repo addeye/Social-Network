@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMahasiswaTable extends Migration
+class CreateLikesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateMahasiswaTable extends Migration
      */
     public function up()
     {
-        Schema::create('mahasiswa', function($table) {
-            $table->increments('mahasiswa_id');
-            $table->string('nama', 50);
-            $table->string('no_telp', 50);
-            $table->text('alamat');
+        Schema::create('likes', function (Blueprint $table) {
+            $table->increments('id');
             $table->timestamps();
+            $table->integer('user_id');
+            $table->integer('post_id');
+            $table->boolean('like');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateMahasiswaTable extends Migration
      */
     public function down()
     {
-        Schema::drop('mahasiswa');
+        Schema::drop('likes');
     }
 }
