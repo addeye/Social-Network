@@ -44,6 +44,16 @@ Route::group(['middleware' => ['web']], function ()
         'as' => 'logout'
     ]);
 
+    Route::get('/account',[
+        'uses' => 'UserController@getAccount',
+        'as' => 'account'
+    ]);
+
+    Route::post('/updateaccount',[
+        'uses' => 'UserController@getAccount',
+        'as' => 'account.save'
+    ]);
+
     Route::get('/dashboard',[
        'uses' => 'PostController@getDashboard',
         'as' => 'dashboard',
@@ -66,69 +76,7 @@ Route::group(['middleware' => ['web']], function ()
         'as' => 'edit'
     ]);
 
-
 });
-
-//Mahasiswa
-
-Route::post('/save-mahasiswa',[
-    'uses' => 'MahasiswaController@savedata',
-    'as' => 'post.savedata'
-]);
-
-Route::get('/form-mahasiswa',[
-    'uses' => 'MahasiswaController@addForm',
-    'as' => 'get.form'
-]);
-
-Route::get('/all-mahasiswa',[
-    'uses' => 'MahasiswaController@getAll',
-    'as' => 'get.all'
-]);
-
-Route::put('update-mahasiswa/{id}',[
-    'uses' => 'MahasiswaController@update',
-    'as' => 'get.update'
-]);
-
-Route::get('/listid-mahasiswa/{id}',[
-    'uses' => 'MahasiswaController@getById',
-]);
-
-Route::get('/delete-mahasiswa/{id}',[
-    'uses' => 'MahasiswaController@delete',
-]);
-
-
-//Kamar
-
-Route::post('/save-kamar',[
-    'uses' => 'RoomController@savedata',
-    'as' => 'post.savedata'
-]);
-
-Route::get('/form-kamar',[
-    'uses' => 'RoomController@addForm',
-    'as' => 'get.form'
-]);
-
-Route::get('/kamar',[
-    'uses' => 'RoomController@getAll',
-    'as' => 'get.kamarall'
-]);
-
-Route::put('update-kamar/{id}',[
-    'uses' => 'MahasiswaController@update',
-    'as' => 'get.update'
-]);
-
-Route::get('/listid-kamar/{id}',[
-    'uses' => 'MahasiswaController@getById',
-]);
-
-Route::get('/delete-kamar/{id}',[
-    'uses' => 'MahasiswaController@delete',
-]);
 
 
 
