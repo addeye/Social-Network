@@ -59,8 +59,11 @@ class PostController extends Controller
 
     public function postLikePost(Request $request)
     {
+//        return $request->all();
         $post_id = $request['postId'];
-        $is_like = $request['islike'] === true;
+        $is_like = $request['isLike'] === 'true' ? true : false;
+
+        var_dump($is_like);
 
         $update = false;
         $post = Post::find($post_id);
@@ -86,6 +89,7 @@ class PostController extends Controller
         {
             $like = new Like();
         }
+
         $like->like = $is_like;
         $like->user_id = $user->id;
         $like->post_id = $post->id;
@@ -97,7 +101,7 @@ class PostController extends Controller
         {
             $like->save();
         }
-        return null;
+        return ;
     }
 
 }
