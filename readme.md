@@ -1,6 +1,6 @@
 # Laravel 5.2 PHP Build a social network
 
-This program from tutorial in youtube. I hope anyone can develop and become more awesome
+This program use laravel basic, create user, insert update delete post, and like dislike post.
 
 ## Using Mysql Database
 
