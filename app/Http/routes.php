@@ -29,6 +29,10 @@ Route::group(['middleware' => ['web']], function ()
         return view('welcome');
     })->name('home');
 
+    Route::get('/signup', function() {
+        return view('signup');
+    });
+
     Route::post('/signup', [
         'uses' => 'UserController@postSignUp',
         'as' => 'signup'
@@ -46,7 +50,8 @@ Route::group(['middleware' => ['web']], function ()
 
     Route::get('/account',[
         'uses' => 'UserController@getAccount',
-        'as' => 'account'
+        'as' => 'account',
+        'middleware'=>'auth'
     ]);
 
     Route::post('/updateaccount',[

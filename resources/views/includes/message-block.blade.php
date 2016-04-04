@@ -8,10 +8,12 @@
 ?>
 @if(isset($errors) and count($errors)!=0)
     <div class="row">
-        <div class="col-md-4 col-md-offset-4 error">
-            <ul>
+        <div class="alert alert-danger" role="alert">
+            <ul style="list-style: none">
                 @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
+
+                  <li>{{$error}}.</li>
+
                 @endforeach
             </ul>
         </div>
