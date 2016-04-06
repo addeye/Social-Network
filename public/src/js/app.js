@@ -10,9 +10,11 @@ $('.post').find('.interaction').find('.edit').on('click', function(event)
 
     postBodyElement = event.target.parentNode.parentNode.childNodes[1];
     var postBody = postBodyElement.textContent;
-    postId = event.target.parentNode.parentNode.dataset['postid'];
+    postId = $(this).attr("data-postId");
     $('#post-body').val(postBody);
     $('#edit-modal').modal();
+    console.log(postId);
+    console.log(postBodyElement);
 });
 
 $('#modal-save').on('click', function() {
@@ -29,7 +31,7 @@ $('#modal-save').on('click', function() {
 
 $('.like').on('click', function(event){
     event.preventDefault();
-    postId = event.target.parentNode.parentNode.dataset['postid'];
+    postId = $(this).attr("data-postId");
     var isLike = event.target.previousElementSibling == null;
     $.ajax({
         method : 'POST',
@@ -37,11 +39,14 @@ $('.like').on('click', function(event){
         data : {isLike : isLike, postId : postId, _token: token}
     })
         .done(function(){
+            console.log('status sudah ajax '+isLike);
             event.target.innerText = isLike ? event.target.innerText == 'Like' ? 'You like this post' : 'Like' : event.target.innerText == 'Dislike' ? 'You don\'t like this post' : 'Dislike';
             if(isLike){
                 event.target.nextElementSibling.innerText = 'Dislike';
+                var jml_like = $('#number_like').text();
             } else {
                 event.target.previousElementSibling.innerText = 'Like';
             }
         });
 });
+

@@ -32,6 +32,7 @@ class PostController extends Controller
         if($request->user()->posts()->save($post)){
             $message = 'Post successfully created';
         }
+
         return redirect()->route('dashboard')->with(['message' => $message]);
     }
 
@@ -63,7 +64,7 @@ class PostController extends Controller
         $post_id = $request['postId'];
         $is_like = $request['isLike'] === 'true' ? true : false;
 
-        var_dump($is_like);
+//        var_dump($is_like);
 
         $update = false;
         $post = Post::find($post_id);
@@ -82,7 +83,8 @@ class PostController extends Controller
             if($already_like == $is_like)
             {
                 $like->delete();
-                return null;
+                $status = $is_like;
+                $nilai = 0;
             }
         }
         else
@@ -100,8 +102,14 @@ class PostController extends Controller
         else
         {
             $like->save();
+            $nilai = 1;
         }
-        return ;
+        $status = $is_like;
+
+        return [
+            'status' => $status,
+            'nilai' => $nilai
+        ];
     }
 
 }
